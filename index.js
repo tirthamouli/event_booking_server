@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const graphql = require('express-graphql');
 const { buildSchema } = require('graphql');
 
@@ -65,8 +66,20 @@ app.get('/', (req, res, _next) => {
   res.send('Hello world');
 });
 
-// Step 3: Listen on port
-app.listen(3000, () => {
+// Step 5: Connect to mongodb and listen to port
+mongoose.connect(
+  process.env.DB_URI,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+).then(() => {
+  // Step 5.1: Listen on port
+  app.listen(3000, () => {
   // eslint-disable-next-line no-console
-  console.log('Listening to port 3000');
+    console.log('Listening to port 3000');
+  });
+}).catch((_err) => {
+  // eslint-disable-next-line no-console
+  console.log('Unable to connect to database');
 });
