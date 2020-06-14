@@ -18,5 +18,6 @@ module.exports = {
         varsIgnorePattern: '^ignored?$',
       },
     ],
+    'no-restricted-globals': [0],
   },
 };
