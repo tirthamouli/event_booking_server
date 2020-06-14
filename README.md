@@ -43,6 +43,25 @@ Eg: What data is needed can be sent using query parameters.
   }
 }
 
+EG:
+mutation {
+  createEvent(eventInput:{ title: "Another test", description: "Some other description", price: 50 }){
+    id,
+    title,
+    description,
+    price,
+    date,
+  }
+}
+
+query {
+  events {
+    id,
+    date,
+    title
+  }
+}
+
 1. Operation Type - 
    a. Query - GET request
    b. Mutation - POST/PUT/PATCH/DELETE methods
