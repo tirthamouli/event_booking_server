@@ -19,5 +19,6 @@ module.exports = {
       },
     ],
     'no-restricted-globals': [0],
+    'no-use-before-define': [0],
   },
 };
